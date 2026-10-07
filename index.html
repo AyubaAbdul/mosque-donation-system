@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mosque Donation & Charity Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">☪</div>
+          <div>
+            <p class="eyebrow">Community giving</p>
+            <h1>Mosque Care</h1>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <a href="#causes">Causes</a>
+          <a href="#donate">Donate</a>
+          <a href="#reports">Reports</a>
+          <a href="#admin">Admin</a>
+        </nav>
+
+        <div class="role-switcher" aria-label="Role selector">
+          <button class="role-btn active" data-role="donor">Donor</button>
+          <button class="role-btn" data-role="admin">Admin</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow accent">Transparent charity management</p>
+            <h2>Support community projects with trust and clarity.</h2>
+            <p>
+              Help fund food drives, education support, health outreach, and mosque development
+              projects with secure digital giving and clear reporting.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-btn" href="#causes">Explore causes</a>
+              <button class="secondary-btn" id="quickDonateBtn">Quick donate</button>
+            </div>
+            <div class="stats-row">
+              <div class="stat-box">
+                <strong id="statRaised">$0</strong>
+                <span>Raised this month</span>
+              </div>
+              <div class="stat-box">
+                <strong id="statCampaigns">0</strong>
+                <span>Active campaigns</span>
+              </div>
+              <div class="stat-box">
+                <strong id="statDonors">0</strong>
+                <span>Donors engaged</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-panel">
+            <div class="mini-card">
+              <span class="mini-label">Current focus</span>
+              <h3>Ramadan Relief Fund</h3>
+              <div class="progress-meta">
+                <span>$24,500 raised</span>
+                <span>68% of goal</span>
+              </div>
+              <div class="bar"><span style="width: 68%"></span></div>
+            </div>
+            <div class="mini-grid">
+              <div>
+                <span class="mini-label">Secure payments</span>
+                <strong>Encrypted</strong>
+              </div>
+              <div>
+                <span class="mini-label">Receipts</span>
+                <strong>Instant</strong>
+              </div>
+              <div>
+                <span class="mini-label">Reports</span>
+                <strong>Admin-ready</strong>
+              </div>
+              <div>
+                <span class="mini-label">Access</span>
+                <strong>Role-based</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="causes" class="section-block donor-section">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow accent">Available causes</p>
+              <h2>Support a project that matters</h2>
+            </div>
+            <button class="secondary-btn small-btn" id="viewAllBtn">View all causes</button>
+          </div>
+          <div id="causeGrid" class="cause-grid"></div>
+        </section>
+
+        <section id="donate" class="section-block donor-section">
+          <div class="donation-layout">
+            <div class="donation-panel card">
+              <div class="section-header compact-header">
+                <div>
+                  <p class="eyebrow accent">Donate now</p>
+                  <h3>Complete your contribution</h3>
+                </div>
+              </div>
+
+              <form id="donationForm">
+                <div class="form-grid two-col">
+                  <label>
+                    Full name
+                    <input type="text" id="donorName" placeholder="Your full name" required />
+                  </label>
+                  <label>
+                    Email address
+                    <input type="email" id="donorEmail" placeholder="you@example.com" required />
+                  </label>
+                </div>
+
+                <div class="form-grid two-col">
+                  <label>
+                    Select cause
+                    <select id="campaignSelect" required></select>
+                  </label>
+                  <label>
+                    Donation amount ($)
+                    <input type="number" id="donationAmount" min="5" step="5" value="50" required />
+                  </label>
+                </div>
+
+                <div class="form-grid two-col">
+                  <label>
+                    Payment method
+                    <select id="paymentMethod">
+                      <option>Credit/Debit Card</option>
+                      <option>Bank Transfer</option>
+                      <option>Mobile Money</option>
+                      <option>Cash at Mosque</option>
+                    </select>
+                  </label>
+                  <label>
+                    Donation frequency
+                    <select id="donationFrequency">
+                      <option>One-time</option>
+                      <option>Monthly</option>
+                      <option>Quarterly</option>
+                    </select>
+                  </label>
+                </div>
+
+                <label>
+                  Message / dedication
+                  <textarea id="donationNote" rows="3" placeholder="Optional message for the mosque team"></textarea>
+                </label>
+
+                <div class="secure-box">
+                  <span class="lock">🔒</span>
+                  <p>Secure donation simulation. No real payment is processed in this demo.</p>
+                </div>
+
+                <button type="submit" class="primary-btn submit-btn">Confirm donation</button>
+              </form>
+            </div>
+
+            <aside class="receipts-panel card">
+              <div class="section-header compact-header">
+                <div>
+                  <p class="eyebrow accent">Receipt history</p>
+                  <h3>Latest donations</h3>
+                </div>
+              </div>
+              <div id="receiptList" class="receipt-list"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="reports" class="section-block donor-section">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow accent">Impact overview</p>
+              <h2>Campaign performance</h2>
+            </div>
+          </div>
+          <div id="reportGrid" class="report-grid"></div>
+        </section>
+
+        <section id="admin" class="section-block admin-section hidden">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow accent">Admin dashboard</p>
+              <h2>Operations and reporting</h2>
+            </div>
+          </div>
+
+          <div class="admin-summary">
+            <div class="summary-tile">
+              <span>Total funds</span>
+              <strong id="adminFunds">$0</strong>
+            </div>
+            <div class="summary-tile">
+              <span>Successful donations</span>
+              <strong id="adminSuccess">0</strong>
+            </div>
+            <div class="summary-tile">
+              <span>Campaigns live</span>
+              <strong id="adminCampaignCount">0</strong>
+            </div>
+            <div class="summary-tile">
+              <span>Pending review</span>
+              <strong id="adminPending">0</strong>
+            </div>
+          </div>
+
+          <div class="admin-layout">
+            <div class="card admin-card">
+              <h3>Create new campaign</h3>
+              <form id="campaignForm">
+                <label>
+                  Campaign title
+                  <input type="text" id="newCampaignTitle" placeholder="e.g. Ramadan Food Basket" required />
+                </label>
+                <label>
+                  Category
+                  <select id="newCampaignCategory">
+                    <option>Education</option>
+                    <option>Food Security</option>
+                    <option>Health & Wellbeing</option>
+                    <option>Mosque Support</option>
+                    <option>Community Relief</option>
+                  </select>
+                </label>
+                <label>
+                  Funding goal ($)
+                  <input type="number" id="newCampaignGoal" min="100" step="50" value="5000" required />
+                </label>
+                <label>
+                  Description
+                  <textarea id="newCampaignDescription" rows="3" placeholder="Describe the campaign impact"></textarea>
+                </label>
+                <button type="submit" class="primary-btn submit-btn">Add campaign</button>
+              </form>
+            </div>
+
+            <div class="card admin-card">
+              <h3>Recent transactions</h3>
+              <div id="transactionList" class="transaction-list"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
